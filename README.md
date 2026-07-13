@@ -1,4 +1,4 @@
-# booktore
+# bookstore
 
 Projeto Django com Django Rest Framework.
 
