@@ -1,4 +1,45 @@
+# Python
 __pycache__/
-*.pyc
+*.py[codz]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Django
+*.log
+local_settings.py
 db.sqlite3
+db.sqlite3-journal
+media/
+
+# Environment variables
 .env
+.envrc
+
+# Poetry
+# (mantendo o poetry.lock no Git é recomendado)
+poetry.toml
+
+# Tests / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDEs
+.vscode/
+.idea/
+
+# Build / distribution
+build/
+dist/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Ruff
+.ruff_cache/
