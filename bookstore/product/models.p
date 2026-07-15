@@ -12,9 +12,7 @@ class Product(models.Model):
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
-        related_name="products",
-        null=True,
-        blank=True
+        related_name="products"
     )
     name = models.CharField(max_length=100)
     description = models.TextField()
