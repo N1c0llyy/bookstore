@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_DB: bookstore
+          POSTGRES_USER: bookstore
+          POSTGRES_PASSWORD: bookstore
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U bookstore -d bookstore"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      - name: Instalar Poetry
+        run: pip install poetry
+
+      - name: Instalar dependencias
+        run: poetry install
+
+      - name: Executar migrations
+        env:
+          DB_HOST: localhost
+        run: poetry run python manage.py migrate
+
+      - name: Executar testes
+        env:
+          DB_HOST: localhost
+        run: poetry run python manage.py test
