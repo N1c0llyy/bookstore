@@ -1,0 +1,31 @@
+services:
+  web:
+    build: .
+    container_name: bookstore_app
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - bookstore-network
+
+  db:
+    image: postgres:17
+    container_name: bookstore_db
+    environment:
+      POSTGRES_DB: bookstore
+      POSTGRES_USER: bookstore
+      POSTGRES_PASSWORD: bookstore
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - bookstore-network
+
+networks:
+  bookstore-network:
+
+volumes:
+  postgres_data:
