@@ -1,1 +1,1 @@
-web: poetry run gunicorn bookstore.bookstore.wsgi --log-file -
+web: poetry run gunicorn bookstore.wsgi --log-file -
