@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-yr%q)po$3wi=c(f(-njerr&wg-=_o(z-89gydsor3q8bveu5f^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["bookstore-6cgf.onrender.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ['n1c0lly.pythonanywhere.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -78,12 +78,11 @@ WSGI_APPLICATION = 'bookstore.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-import dj_database_url
-
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://bookstore:bookstore@db:5432/bookstore'
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
