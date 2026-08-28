@@ -29,7 +29,7 @@ jobs:
         run: poetry install
 
       - name: Executar migrations
-        run: poetry run python bookstore/manage.py migrate
+        run: poetry run python manage.py migrate
 
       - name: Executar testes
-        run: poetry run python bookstore/manage.py test api.tests
+        run: poetry run python manage.py test api.tests
